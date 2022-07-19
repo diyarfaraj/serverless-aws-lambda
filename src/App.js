@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Table, Button } from "reactstrap";
+import { faImage, faT, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { forntAwsomeIcon } from "@fortawesome/react-fontawesome";
 
 class App extends Component {
   state = {
@@ -28,6 +30,8 @@ class App extends Component {
 
   remove(id) {
     console.log(id);
+    let updatedInvoices = [...this.state.invoices].filter((i) => i.id !== id);
+    this.setState({ invoices: updatedInvoices });
   }
 
   render() {
@@ -88,12 +92,14 @@ class App extends Component {
           <div className="col-xs-12 center text-center">
             <Table dark responsive striped bordered hover>
               <thead>
-                <th>Vendor</th>
-                <th>Amount</th>
-                <th>Invoice nr</th>
-                <th>data</th>
-                <th colSpan="4">Action</th>
-                <th>data</th>
+                <tr>
+                  <th>Vendor</th>
+                  <th>Amount</th>
+                  <th>Invoice nr</th>
+                  <th>data</th>
+                  <th colSpan="4">Action</th>
+                  <th>data</th>
+                </tr>
               </thead>
               <tbody>
                 {this.state.invoices.length === 0 ? (
